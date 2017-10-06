@@ -6,24 +6,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script>
     Discourse._registerPluginCode('0.4', function (api) {
-    api.changeWidgetSetting('home-logo', 'href', 'https://r8.beer');
+    api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname);
     });
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
     function ssoLegacy(token) {
         // Create a url that points to a page on the legacy site which will complete the auth process
-        const url = `https://r8.beer/legacy_sso.asp?access_token=${encodeURI(token)}`;
-        console.log(url);
+        const url = `https://${window.location.hostname}/legacy_sso.asp?access_token=${encodeURI(token)}`;
 
-        // For QA we'll need to include some credentials
-        const options = { method: 'GET', credentials: 'include' }; //<----- only needed for QA
-        
+        if (window.location.hostname != 'ratebeer.com') {
+            const options = { method: 'GET', credentials: 'include' };
+        }
+
         // Fire off the request to the legacy site
         return fetch(url, options).then((res) => res.text())
         .then((json) => {
             const incoming = JSON.parse(json);
             Object.keys(incoming).forEach((cookieName) => {
-            Cookies.set(cookieName, incoming[cookieName], { domain: '.r8.beer' });
+            Cookies.set(cookieName, incoming[cookieName], { domain: `.${window.location.hostname}` });
             })
         })
         .catch((err) => {
