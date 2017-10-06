@@ -1,0 +1,55 @@
+<script 
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+    crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<script>
+    Discourse._registerPluginCode('0.4', function (api) {
+    api.changeWidgetSetting('home-logo', 'href', 'https://r8.beer');
+    });
+</script>
+<script type="text/discourse-plugin" version="0.8.9">
+    function ssoLegacy(token) {
+        // Create a url that points to a page on the legacy site which will complete the auth process
+        const url = `https://r8.beer/legacy_sso.asp?access_token=${encodeURI(token)}`;
+        console.log(url);
+
+        // For QA we'll need to include some credentials
+        const options = { method: 'GET', credentials: 'include' }; //<----- only needed for QA
+        
+        // Fire off the request to the legacy site
+        return fetch(url, options).then((res) => res.text())
+        .then((json) => {
+            const incoming = JSON.parse(json);
+            Object.keys(incoming).forEach((cookieName) => {
+            Cookies.set(cookieName, incoming[cookieName], { domain: '.r8.beer' });
+            })
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
+
+    // user just logged in
+    var token = Cookies.get('token');
+    const prevVisit = localStorage.getItem('previous_visit_at')
+    if (api.getCurrentUser() != null && token != null) {
+        const { previous_visit_at } = api.getCurrentUser();
+        if (prevVisit != previous_visit_at) {
+            ssoLegacy(token);
+            localStorage.setItem('previous_visit_at', previous_visit_at);
+        }
+    }
+
+    // user needs to be logged in
+    if (api.getCurrentUser() == null && token != null) {
+        const returnPath = encodeURIComponent(window.location.pathname);
+        window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
+    }
+
+    // Ensure user is logged out
+    if (token == null && prevVisit != null) {
+        localStorage.setItem('previous_visit_at', null);
+    }
+</script>
