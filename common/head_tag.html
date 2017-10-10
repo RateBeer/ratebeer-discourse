@@ -11,7 +11,8 @@
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
     function ssoLegacy(token) {
-        const url = `https://${window.location.hostname}/legacy_sso.asp?access_token=${encodeURI(token)}`;
+        const baseUrl = window.location.hostname.replace('community.', '')
+        const url = `https://${baseUrl}/legacy_sso.asp?access_token=${encodeURI(token)}`;
 
         const options = { method: 'GET', credentials: 'include' };
         return fetch(url, options).then((res) => res.text())
