@@ -10,40 +10,9 @@
     });
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
-    function ssoLegacy(token) {
-        const replacement = window.location.hostname.indexOf('.beer') == 12 ? '' : 'www.'
-        const baseUrl = window.location.hostname.replace('community.', replacement)
-        const url = `https://${baseUrl}/legacy_sso.asp?access_token=${encodeURI(token)}`;
-
-        const options = { method: 'GET', credentials: 'include' };
-        return fetch(url, options).then((res) => res.text())
-        .then((json) => {
-            const incoming = JSON.parse(json);
-            Object.keys(incoming).forEach((cookieName) => {
-            Cookies.set(cookieName, incoming[cookieName], { domain: `.${window.location.hostname}` });
-            })
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-    }
-
     var token = Cookies.get('token');
-    const prevVisit = localStorage.getItem('previous_visit_at')
-    if (api.getCurrentUser() != null && token != null) {
-        const { previous_visit_at } = api.getCurrentUser();
-        if (prevVisit != previous_visit_at) {
-            ssoLegacy(token);
-            localStorage.setItem('previous_visit_at', previous_visit_at);
-        }
-    }
-
     if (api.getCurrentUser() == null && token != null) {
         const returnPath = encodeURIComponent(window.location.pathname);
         window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
-    }
-
-    if (token == null && prevVisit != null) {
-        localStorage.setItem('previous_visit_at', null);
     }
 </script>
