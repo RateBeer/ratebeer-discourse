@@ -1,0 +1,11 @@
+{
+    "name": "RateBeer",
+    "about_url": "https://www.ratebeer.com",
+    "license_url": "https://ratebeer.com/license",
+     "assets": {},
+     "color_schemes": {
+         "Scheme Name": {
+            "primary": "RateBeer"
+          }
+      }
+  }
