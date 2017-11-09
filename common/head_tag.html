@@ -16,3 +16,58 @@
         window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
     }
 </script>
+
+<script type="text/discourse-plugin" version="0.8.7">
+    api.registerConnectorClass('user-profile-primary', 'external-site-link', {
+      setupComponent(args, component) {
+        component.set('externalSiteLink', args.model.get('externalSiteLink'));
+      }
+    });
+
+    api.registerConnectorClass('user-card-metadata', 'external-site-link', {
+      setupComponent(args, component) {
+        component.set('externalSiteLink', args.user.get('externalSiteLink'));
+      }
+    });
+
+    api.modifyClass('model:user', {
+      externalSiteLink: function() {
+          const siteUserFields = Discourse.Site.currentProp('user_fields');
+          if (!Ember.isEmpty(siteUserFields)) {
+            const externalUserIdField = siteUserFields.filterBy('name', 'User Profile')[0]
+            if (!externalUserIdField) {
+              return null;
+            }
+            const userFieldId = externalUserIdField.get('id');
+            const userFields = this.get('user_fields');
+            if (userFields && userFields[userFieldId]) {
+              const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
+              const link = "<a href='"+url+"' target='_blank'>"+url+"</a>";
+              return Ember.Object.create({ link, name: externalUserIdField.get('name') });
+            } else {
+              return null;
+            }
+          }
+      }.property('user_fields.@each.value')
+    });
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-profile-primary/external-site-link'>
+  {{#if externalSiteLink}}
+    <div class="public-user-fields">
+      <div class="public-user-field">
+        <span class="user-field-name">{{externalSiteLink.name}}</span>:
+        <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+      </div>
+    </div>
+  {{/if}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-card-metadata/external-site-link'>
+  {{#if externalSiteLink}}
+    <h3 class="user-card-public-field">
+      <span class="user-field-name">{{externalSiteLink.name}}</span>:
+      <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+    </h3>
+  {{/if}}
+</script>
