@@ -738,3 +738,15 @@ padding: 15px;
 .d-header {
     box-shadow: none;
 }
+
+.public-user-field.profile {
+    display: none;
+}
+  
+#user-card .metadata h3 {
+    float: left;
+}
+
+h3.user-card-public-field {
+    clear: both;   
+}

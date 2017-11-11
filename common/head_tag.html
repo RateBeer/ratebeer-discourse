@@ -1,18 +1,91 @@
 <script 
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-    crossorigin="anonymous">
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script>
-    Discourse._registerPluginCode('0.4', function (api) {
-        api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', ''));
-    });
+Discourse._registerPluginCode('0.4', function (api) {
+    api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', ''));
+});
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
-    var token = Cookies.get('token');
-    if (api.getCurrentUser() == null && token != null) {
-        const returnPath = encodeURIComponent(window.location.pathname);
-        window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
-    }
+var token = Cookies.get('token');
+if (api.getCurrentUser() == null && token != null) {
+    const returnPath = encodeURIComponent(window.location.pathname);
+    window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
+}
+</script>
+<script 
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<script>
+Discourse._registerPluginCode('0.4', function (api) {
+    api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', ''));
+});
+</script>
+<script type="text/discourse-plugin" version="0.8.9">
+var token = Cookies.get('token');
+if (api.getCurrentUser() == null && token != null) {
+    const returnPath = encodeURIComponent(window.location.pathname);
+    window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
+}
+</script>
+
+<script type="text/discourse-plugin" version="0.8.7">
+api.registerConnectorClass('user-profile-primary', 'external-site-link', {
+  setupComponent(args, component) {
+    component.set('externalSiteLink', args.model.get('externalSiteLink'));
+  }
+});
+
+api.registerConnectorClass('user-card-metadata', 'external-site-link', {
+  setupComponent(args, component) {
+    component.set('externalSiteLink', args.user.get('externalSiteLink'));
+  }
+});
+
+api.modifyClass('model:user', {
+  externalSiteLink: function() {
+      const siteUserFields = Discourse.Site.currentProp('user_fields');
+      if (!Ember.isEmpty(siteUserFields)) {
+        const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
+        if (!externalUserIdField) {
+          return null;
+        }
+        const userFieldId = externalUserIdField.get('id');
+        const userFields = this.get('user_fields');
+        if (userFields && userFields[userFieldId]) {
+          const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
+          const link = "<a href='"+url+"' target='_blank'>click here</a>";
+          return Ember.Object.create({ link, name: 'Profile' });
+        } else {
+          return null;
+        }
+      }
+  }.property('user_fields.@each.value')
+});
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-profile-primary/external-site-link'>
+{{#if externalSiteLink}}
+<div class="public-user-fields">
+  <div class="public-user-field">
+    <span class="user-field-name">{{externalSiteLink.name}}</span>:
+    <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+  </div>
+</div>
+{{/if}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-card-metadata/external-site-link'>
+{{#if externalSiteLink}}
+<h3 class="user-card-public-field">
+  <span class="user-field-name">{{externalSiteLink.name}}</span>:
+  <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+</h3>
+{{/if}}
 </script>
