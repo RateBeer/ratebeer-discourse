@@ -50,22 +50,31 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
 
 api.modifyClass('model:user', {
   externalSiteLink: function() {
-      const siteUserFields = Discourse.Site.currentProp('user_fields');
-      if (!Ember.isEmpty(siteUserFields)) {
-        const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
-        if (!externalUserIdField) {
-          return null;
-        }
-        const userFieldId = externalUserIdField.get('id');
-        const userFields = this.get('user_fields');
-        if (userFields && userFields[userFieldId]) {
-          const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
-          const link = "<a href='"+url+"' target='_blank'>click here</a>";
-          return Ember.Object.create({ link, name: 'Profile' });
-        } else {
-          return null;
-        }
+    console.log('externalSiteLink');
+    const siteUserFields = Discourse.Site.currentProp('user_fields');
+    console.log(siteUserFields);
+    if (!Ember.isEmpty(siteUserFields)) {
+      console.log('not empty');
+      const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
+      console.log(externalUserIdField);
+      if (!externalUserIdField) {
+        return null;
       }
+      const userFieldId = externalUserIdField.get('id');
+      console.log('userFieldId=' + userFieldId);
+      const userFields = this.get('user_fields');
+      console.log(userFields);
+      if (userFields && userFields[userFieldId]) {
+        console.log('building url...');
+        const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
+        console.log(url);
+        const link = "<a href='"+url+"' target='_blank'>click here</a>";
+        console.log('link=' + link);
+        return Ember.Object.create({ link, name: 'Profile' });
+      } else {
+        return null;
+      }
+    }
   }.property('user_fields.@each.value')
 });
 </script>
