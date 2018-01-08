@@ -30,7 +30,7 @@
     <li><a href="#" onclick="window.location=`https://community.${window.location.host.replace('community.','')}/`">Forums</a></li>
     <li><a href="#" onclick="window.location=`https://${window.location.host.replace('community.','')}/places/browse/`">Places</a></li>
     <li>
-      <input type="text" style="margin-top: 5px; font-weight: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" placeholder="Beer search" onkeyup="beerSearch()" />
+      <input id="txtBeerSearch" type="text" style="margin-top: 5px; font-weight: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" placeholder="Beer search" onkeyup="beerSearch(event)" />
     </li>
     </ul>
     
