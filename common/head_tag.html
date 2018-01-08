@@ -89,3 +89,12 @@ api.modifyClass('model:user', {
 </h3>
 {{/if}}
 </script>
+
+<script>
+function beerSearch(e) {
+  if (e.keyCode != 13) return
+  var txt = document.getElementById('txtBeerSearch').value;
+  var url = 'https://' + window.location.hostname.replace('community.', '') + '/phoenixsearch?q=';
+  document.location = encodeURI(url + txt);
+}
+</script>
