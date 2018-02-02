@@ -94,7 +94,7 @@ api.modifyClass('model:user', {
 function beerSearch(e) {
   if (e.keyCode != 13) return
   var txt = document.getElementById('txtBeerSearch').value;
-  var url = 'https://' + window.location.hostname.replace('community.', '') + '/phoenixsearch?q=';
+  var url = 'https://' + window.location.hostname.replace('community.', '') + '/search?q=';
   document.location = encodeURI(url + txt);
 }
 </script>
