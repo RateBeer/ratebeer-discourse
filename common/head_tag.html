@@ -9,24 +9,7 @@
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
 var token = Cookies.get('token');
-console.log(token.length);
 if (api.getCurrentUser() == null && token != null && token.length > 0) {
-    const returnPath = encodeURIComponent(window.location.pathname);
-    window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
-}
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous">
-    </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
-<script>
-    Discourse._registerPluginCode('0.4', function (api) {
-        api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', ''));
-    });
-</script>
-<script type="text/discourse-plugin" version="0.8.9">
-var token = Cookies.get('token');
-if (api.getCurrentUser() == null && token != null) {
     const returnPath = encodeURIComponent(window.location.pathname);
     window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
 }
