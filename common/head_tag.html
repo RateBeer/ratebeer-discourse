@@ -9,8 +9,8 @@
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
 var token = Cookies.get('token');
-console.log(token);
-if (api.getCurrentUser() == null && token != null && token != '') {
+console.log(token.length);
+if (api.getCurrentUser() == null && token != null && token.length > 0) {
     const returnPath = encodeURIComponent(window.location.pathname);
     window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
 }
