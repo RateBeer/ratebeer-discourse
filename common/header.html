@@ -32,18 +32,25 @@
   </div>
   <div data-css-derz9x="">
     <div data-css-cmdpdg="">
-      <a data-css-1tzz3vk="" href="/beer-ratings/">
+      <a id="lnkRatings" data-css-1tzz3vk="" href="/beer-ratings/">
         <span>Ratings</span>
       </a>
-      <a data-css-1tzz3vk="" href="/users">
+      <a id="lnkUsers" data-css-1tzz3vk="" href="/users">
         <span>Community</span>
       </a>
-      <a data-css-1tzz3vk="" href="/events">
+      <a id="lnkEvents" data-css-1tzz3vk="" href="/events">
         <span>Events</span>
       </a>
-      <a data-css-1tzz3vk="" href="/places/browse/">
+      <a id="lnkPlaces" data-css-1tzz3vk="" href="/places/browse/">
         <span>Places</span>
       </a>
+      <script type="text/javascript">
+        var root = `//${window.location.host.replace('community.','www.')}`
+        document.getElementById('lnkRatings').setAttribute('href', `${root}/beer-ratings/`)
+        document.getElementById('lnkUsers').setAttribute('href', `${root}/users`)
+        document.getElementById('lnkEvents').setAttribute('href', `${root}/events`)
+        document.getElementById('lnkPlaces').setAttribute('href', `${root}/places/browse/`)
+      </script>
     </div>
   </div>
 </nav>
