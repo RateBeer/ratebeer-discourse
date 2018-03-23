@@ -37,8 +37,11 @@ api.modifyClass('model:user', {
         return null;
       }
       const userFieldId = externalUserIdField.get('id');
+      const userFieldName = externalUserIdField.get('username');
       const userFields = this.get('user_fields');
       if (userFields && userFields[userFieldId]) {
+        const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${userFields[userFieldName]}`
+        document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
         const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
         const link = "<a href='"+url+"' target='_blank'>click here</a>";
         return Ember.Object.create({ link, name: 'Profile' });

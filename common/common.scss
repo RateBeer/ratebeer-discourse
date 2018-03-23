@@ -823,7 +823,6 @@ h3.user-card-public-field {
 }
 
 .css-ilkk6k, [data-css-ilkk6k] {
-    height: 44px;
     width: -webkit-fill-available;
     font-size: 14px;
     letter-spacing: 0.2px;
@@ -864,4 +863,22 @@ h3.user-card-public-field {
     color: white;
     padding-right: 30px;
     text-decoration: none;
+}
+
+.css-9hnqy, [data-css-9hnqy] {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.css-1mct221, [data-css-1mct221] {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 36px;
 }
