@@ -752,6 +752,10 @@ h3.user-card-public-field {
 }
 
 /* header css */
+.css-1yksdj1, [data-css-1yksdj1] {
+    width: 171px;
+    height: 39.5px;
+}
 .css-rc4l4, [data-css-rc4l4] {
     width: 100vw;
     z-index: 5;
@@ -859,22 +863,4 @@ h3.user-card-public-field {
     color: white;
     padding-right: 30px;
     text-decoration: none;
-}
-
-.css-9hnqy, [data-css-9hnqy] {
-    width: 70px;
-    height: 70px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.4);
-}
-
-.css-1mct221, [data-css-1mct221] {
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    border-radius: 36px;
 }

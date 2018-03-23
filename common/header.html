@@ -8,7 +8,10 @@
   <div data-css-w1hgs3="">
     <form id="phoenixHeaderForm" autocomplete="off" data-css-ypxlhu="" action=".">
       <div data-css-gqw6cb="">
-        <img src="https//www.r8.beer/static/media/grey-search.9417d93b.svg" data-css-3e9tas="" alt="search icon">
+        <img id="imgSearch" data-css-3e9tas="" alt="search icon">
+        <script type="text/javascript">
+          document.getElementById('imgSearch').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey-search.9417d93b.svg`)
+        </script>
       </div>
       <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
         spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="bud">
@@ -28,10 +31,6 @@
       <a data-css-1tzz3vk="" href="/places/browse/">
         <span>Places</span>
       </a>
-    </div>
-    <div data-css-9hnqy="">
-      <img src="https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_services"
-        data-css-1mct221="" id="headerUserIcon" alt="user avatar">
     </div>
   </div>
 </nav>
