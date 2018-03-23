@@ -4,7 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script>
     Discourse._registerPluginCode('0.4', function (api) {
-        api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', ''));
+        api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', 'www.'));
     });
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
@@ -74,7 +74,7 @@ api.modifyClass('model:user', {
     function beerSearch(e) {
         if (e.keyCode != 13) return
         var txt = document.getElementById('txtBeerSearch').value;
-        var url = 'https://' + window.location.hostname.replace('community.', '') + '/search?q=';
+        var url = 'https://' + window.location.hostname.replace('community.', 'www.') + '/search?q=';
         document.location = encodeURI(url + txt);
     }
 </script>
