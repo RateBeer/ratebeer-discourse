@@ -60,9 +60,21 @@
     <div id="loggedInSection" data-css-9hnqy="">
       <img data-css-1mct221="" id="headerUserIcon" alt="user avatar">
     </div>
+    <div id="loggedOutSection" data-css-12alag6="">
+      <div data-css-wv3bp0="" id="headerLogIn">
+        <span>Log In</span>
+      </div>
+      <div data-css-11sdxal="" id="headerSignUp">
+        <span>Sign Up</span>
+      </div>
+    </div>
     <script type="text/javascript">
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
-      console.log(C('session'))
+      if (C('session')) {
+        document.getElementById('loggedOutSection').setAttribute('style', 'display: none;')
+      } else {
+        document.getElementById('loggedInSection').setAttribute('style', 'display: none;')
+      }
     </script>
   </div>
 </nav>
