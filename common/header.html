@@ -61,9 +61,9 @@
       <img data-css-1mct221="" id="headerUserIcon" alt="user avatar">
     </div>
     <div id="loggedOutSection" data-css-12alag6="">
-      <div data-css-wv3bp0="" id="headerLogIn">
+      <a data-css-wv3bp0="" id="headerLogIn">
         <span>Log In</span>
-      </div>
+      </a>
       <div data-css-11sdxal="" id="headerSignUp">
         <span>Sign Up</span>
       </div>
@@ -74,6 +74,8 @@
         document.getElementById('loggedOutSection').setAttribute('style', 'display: none;')
       } else {
         document.getElementById('loggedInSection').setAttribute('style', 'display: none;')
+        document.getElementById('headerLogIn').setAttribute('href', `//${window.location.host.replace('community.','www.')}/login.asp`)
+        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/login.asp`)
       }
     </script>
   </div>
