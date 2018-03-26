@@ -1,4 +1,4 @@
-<nav data-css-rc4l4="" onresize="onResize">
+<nav data-css-rc4l4="" onresize="reSizeHeader">
   <a data-css-ctdbf6="" href="/">
     <img id="imgLogo" data-css-1yksdj1="" alt="Header Logo" title="RateBeer">
     <script type="text/javascript">
@@ -75,10 +75,10 @@
       </a>
     </div>
     <script type="text/javascript">
-      function resize() {
+      function reSizeHeader() {
         console.log('resized')
         // Hide/show buger menu
-        if (window.innerWidth > 900) {
+        if (window.innerWidth > 1080) {
           document.getElementById('headerBurgerIcon').setAttribute('style', 'display: none;')
         } else {
           document.getElementById('noBurger').setAttribute('style', 'display: none;')
