@@ -32,7 +32,10 @@
     </form>
   </div>
   <div data-css-derz9x="">
-    <div data-css-cmdpdg="">
+    <div data-css-5bm5ty="" id="headerBurgerIcon">
+      <img src="/static/media/white-hamburger.4fb38f1c.svg" alt="navigation">
+    </div>
+    <div data-css-cmdpdg="" id="noBurger">
       <a id="lnkRatings" data-css-1tzz3vk="" href="/beer-ratings/">
         <span>Ratings</span>
       </a>
@@ -64,18 +67,31 @@
       <a data-css-wv3bp0="" id="headerLogIn">
         <span>Log In</span>
       </a>
-      <div data-css-11sdxal="" id="headerSignUp">
+      <a data-css-11sdxal="" id="headerSignUp">
         <span>Sign Up</span>
-      </div>
+      </a>
     </div>
     <script type="text/javascript">
+      function resize() {
+        // Hide/show buger menu
+        if (window.innerWidth < 900) {
+          document.getElementById('headerBurgerIcon').setAttribute('style', 'display: none;')
+        } else {
+          document.getElementById('noBurger').setAttribute('style', 'display: none;')
+          document.getElementById('headerSignUp').setAttribute('style', 'display: none;')
+        }
+      }
+      resize()
+      
+      // Hide/show login menu
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
       if (C('session')) {
         document.getElementById('loggedOutSection').setAttribute('style', 'display: none;')
       } else {
         document.getElementById('loggedInSection').setAttribute('style', 'display: none;')
-        document.getElementById('headerLogIn').setAttribute('href', `//${window.location.host.replace('community.','www.')}/login.asp`)
-        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/login.asp`)
+        document.getElementById('headerLogIn').setAttribute('href', `//${window.location.host.replace('community.','www.')}/login?redirectUrl=${window.location.host}`)
+        document.getElementById('headerLogIn').setAttribute('style', 'color: #fff;')
+        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/signup?redirectUrl=${window.location.host}`)
       }
     </script>
   </div>
