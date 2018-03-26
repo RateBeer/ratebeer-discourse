@@ -1,4 +1,4 @@
-<nav data-css-rc4l4="">
+<nav data-css-rc4l4="" onresize="onResize">
   <a data-css-ctdbf6="" href="/">
     <img id="imgLogo" data-css-1yksdj1="" alt="Header Logo" title="RateBeer">
     <script type="text/javascript">
@@ -33,9 +33,9 @@
   </div>
   <div data-css-derz9x="">
     <div data-css-5bm5ty="" id="headerBurgerIcon">
-      <img alt="navigation">
+      <img alt="navigation" id="imgNav">
       <script type="text/javascript">
-        document.getElementById('imgSearch').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-hamburger.4fb38f1c.svg`)
+        document.getElementById('imgNav').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-hamburger.4fb38f1c.svg`)
       </script>
     </div>
     <div data-css-cmdpdg="" id="noBurger">
@@ -76,8 +76,9 @@
     </div>
     <script type="text/javascript">
       function resize() {
+        console.log('resized')
         // Hide/show buger menu
-        if (window.innerWidth < 900) {
+        if (window.innerWidth > 900) {
           document.getElementById('headerBurgerIcon').setAttribute('style', 'display: none;')
         } else {
           document.getElementById('noBurger').setAttribute('style', 'display: none;')
