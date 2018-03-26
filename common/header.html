@@ -1,4 +1,4 @@
-<nav data-css-rc4l4="" onresize="reSizeHeader">
+<nav data-css-rc4l4="">
   <a data-css-ctdbf6="" href="/">
     <img id="imgLogo" data-css-1yksdj1="" alt="Header Logo" title="RateBeer">
     <script type="text/javascript">
@@ -85,7 +85,7 @@
           document.getElementById('headerSignUp').setAttribute('style', 'display: none;')
         }
       }
-      resize()
+      window.addEventListener("resize", reSizeHeader)()
 
       // Hide/show login menu
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
