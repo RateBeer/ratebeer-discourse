@@ -33,7 +33,10 @@
   </div>
   <div data-css-derz9x="">
     <div data-css-5bm5ty="" id="headerBurgerIcon">
-      <img src="/static/media/white-hamburger.4fb38f1c.svg" alt="navigation">
+      <img alt="navigation">
+      <script type="text/javascript">
+        document.getElementById('imgSearch').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-hamburger.4fb38f1c.svg`)
+      </script>
     </div>
     <div data-css-cmdpdg="" id="noBurger">
       <a id="lnkRatings" data-css-1tzz3vk="" href="/beer-ratings/">
@@ -82,7 +85,7 @@
         }
       }
       resize()
-      
+
       // Hide/show login menu
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
       if (C('session')) {
