@@ -147,10 +147,11 @@
   function toggleBurgerMenu() {
     var burgerMenu = document.getElementById('burgerMenu');
     var hidden = burgerMenu.offsetParent === null;
+    console.log(hidden);
     if (hidden) {
-      document.getElementById('burgerMenu').setAttribute('style', 'display: flex;');
+      burgerMenu.setAttribute('style', 'display: flex;');
     } else {
-      document.getElementById('burgerMenu').setAttribute('style', 'display: none;');
+      burgerMenu.setAttribute('style', 'display: none;');
     }
   }
   document.getElementById('headerBurgerIcon').addEventListener('click', toggleBurgerMenu);
