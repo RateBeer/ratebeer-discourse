@@ -44,6 +44,12 @@
         document.getElementById('imgNav').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-hamburger.4fb38f1c.svg`)
       </script>
     </div>
+    <script type="text/javascript">
+      function burgerClick() {
+        window.alert('burger');
+      }
+      document.getElementById('headerBurgerIcon').setAttribute('onclick', burgerClick);
+    </script>
     <div data-css-cmdpdg="" id="noBurger">
       <a id="lnkRatings" data-css-1tzz3vk="" href="/beer-ratings/">
         <span>Ratings</span>
@@ -111,13 +117,41 @@
       // Hide/show login menu
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
       if (C('session')) {
-        document.getElementById('loggedOutSection').setAttribute('style', 'display: none;')
+        document.getElementById('loggedOutSection').setAttribute('style', 'display: none;');
       } else {
-        document.getElementById('loggedInSection').setAttribute('style', 'display: none;')
-        document.getElementById('headerLogIn').setAttribute('href', `/session/sso?return_path=${window.location.host}`)
-        document.getElementById('headerLogIn').setAttribute('style', 'color: #fff;')
-        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/signup?redirectUrl=${window.location.host}`)
+        document.getElementById('loggedInSection').setAttribute('style', 'display: none;');
+        document.getElementById('headerLogIn').setAttribute('href', `/session/sso?return_path=${window.location.host}`);
+        document.getElementById('headerLogIn').setAttribute('style', 'color: #fff;');
+        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/signup?redirectUrl=${window.location.host}`);
       }
     </script>
   </div>
 </nav>
+<div id="burgerMenu" data-css-1m2qpe1="">
+  <div data-css-xjtqwl="">
+    <div data-css-1c3acsf=""></div>
+    <div data-css-1m8fupg=""></div>
+    <a data-css-12n8zhl="" href="/beer-ratings/">
+      <span>Ratings</span>
+      <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+    </a>
+    <a data-css-12n8zhl="" href="/users">
+      <span>Community</span>
+      <img name="imgRightCaret" id="imgRightCaret" data-css-2njx2p="" alt=" ">
+    </a>
+    <a data-css-12n8zhl="" href="/events"><span>Events</span>
+      <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+    </a>
+    <a data-css-12n8zhl="" href="/places/browse/"><span>Places</span>
+      <img name="imgRightCaret"  data-css-2njx2p="" alt=" ">
+    </a>
+    <a data-css-12n8zhl="" href="https://community.r8.beer"><span>Forums</span>
+    <img name="imgRightCaret"  data-css-2njx2p="" alt=" "></a>
+  </div>
+</div>
+<script type="text/javascript">
+  var links = document.getElementsByName('imgRightCaret');
+  for(i = 0; i < links.length; i++) {
+    links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
+  }
+</script>
