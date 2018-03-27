@@ -237,7 +237,7 @@
         </a>
       </div>
       <div data-css-1nvvukq="">
-        <a data-css-ccyhl8="" alt="log out">
+        <a id="lnkLogout" data-css-ccyhl8="" alt="log out">
           <span data-css-12alag6="">
           <img id="imgLogout" data-css-66ke4m="" alt="logout icon">
           <script type="text/javascript">
@@ -258,6 +258,8 @@
   document.getElementById('lnkLatestBreweries').setAttribute('style', 'color: #231f20;')
   document.getElementById('lnkProfile').setAttribute('href', `${root}/profile`)
   document.getElementById('lnkProfile').setAttribute('style', 'color: #231f20;')
+  document.getElementById('lnkLogOut').setAttribute('href', `${root}/logout`)
+  document.getElementById('lnkLogOut').setAttribute('style', 'color: #231f20;')
 
   function toggleMenu() {
     var menu = document.getElementById('menu');
