@@ -125,25 +125,33 @@
   <div data-css-xjtqwl="">
     <div id="burgerMenuBkg" data-css-1c3acsf=""></div>
     <div data-css-1m8fupg=""></div>
-    <a data-css-12n8zhl="" href="/beer-ratings/">
+    <a id="lnkBurgerRatings" data-css-12n8zhl="" href="/beer-ratings/">
       <span>Ratings</span>
       <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
-    <a data-css-12n8zhl="" href="/users">
+    <a id="lnkBurgerUsers" data-css-12n8zhl="" href="/users">
       <span>Community</span>
       <img name="imgRightCaret" id="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
-    <a data-css-12n8zhl="" href="/events"><span>Events</span>
+    <a id="lnkBurgerEvents" data-css-12n8zhl="" href="/events"><span>Events</span>
       <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
-    <a data-css-12n8zhl="" href="/places/browse/"><span>Places</span>
+    <a id="lnkBurgerPlaces" data-css-12n8zhl="" href="/places/browse/"><span>Places</span>
       <img name="imgRightCaret"  data-css-2njx2p="" alt=" ">
     </a>
-    <a data-css-12n8zhl="" href="https://community.r8.beer"><span>Forums</span>
-    <img name="imgRightCaret"  data-css-2njx2p="" alt=" "></a>
   </div>
 </div>
 <script type="text/javascript">
+  var root = `//${window.location.host.replace('community.','www.')}`
+  document.getElementById('lnkBurgerRatings').setAttribute('href', `${root}/beer-ratings/`)
+  document.getElementById('lnkBurgerRatings').setAttribute('style', 'color: #fff;')
+  document.getElementById('lnkBurgerUsers').setAttribute('href', `${root}/users`)
+  document.getElementById('lnkBurgerUsers').setAttribute('style', 'color: #fff;')
+  document.getElementById('lnkBurgerEvents').setAttribute('href', `${root}/events`)
+  document.getElementById('lnkBurgerEvents').setAttribute('style', 'color: #fff;')
+  document.getElementById('lnkBurgerPlaces').setAttribute('href', `${root}/places/browse/`)
+  document.getElementById('lnkBurgerPlaces').setAttribute('style', 'color: #fff;')
+
   function toggleBurgerMenu() {
     var burgerMenu = document.getElementById('burgerMenu');
     var visible = burgerMenu.getAttribute('data-visible')
@@ -161,87 +169,96 @@
 </script>
 
 <div id="menu" data-css-1m2qpe1="" style="display: none;">
-    <div data-css-un0k7a="">
-        <div data-css-1qzmcjt=""></div>
-        <div id="menuBkg" data-css-1c3acsf=""></div>
-        <a data-css-1rkqo8u="" href="/user/526437/" alt="view profile">
-          <img id="menuUserImage" data-css-1mct221="" />
-            <div data-css-18nrmr="">
-              <span data-css-s3kr6a="">auth0</span>
-              <span data-css-13u11sg="">
-                <span>My Profile</span>
-                <img id="blueRightCaret" data-css-y7rond="">
-                <script type="text/javascript">
-                  document.getElementById('blueRightCaret').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/blue_right_caret.88ec628f.svg`);
-                </script>
-              </span>
-            </div>
-        </a>
-        <div data-css-1nvvukq="">
-          <a data-css-ccyhl8="" href="/latest" alt="latest">
-            <span>Latest Activity</span>
-          </a>
-          <a data-css-ccyhl8="" href="/latest/breweries/new" alt="new releases">
-            <span>New Releases</span>
-          </a>
-        </div>
-        <div data-css-1nvvukq="">
-          <a data-css-ccyhl8="" href="/user/526437/beer-ratings/" alt="my ratings">
-            <span>My Beer Ratings</span>
-          </a>
-          <a data-css-ccyhl8="" href="/user/526437/place-ratings/" alt="my place ratings">
-            <span>My Place Ratings</span>
-          </a>
-          <a data-css-ccyhl8="" href="/user/526437/breweries/" alt="my breweries">
-            <span>My Breweries</span>
-          </a>
-          <a data-css-ccyhl8="" href="/user/526437/style-ratings/" alt="my beer styles">
-            <span>My Beer Styles</span>
-          </a>
-          <a data-css-ccyhl8="" href="/user/526437/countries-rated/" alt="my countries">
-            <span>My Countries &amp; States</span>
-          </a>
-          <a data-css-ccyhl8="" href="/user/526437/beer-cellar/" alt="my beer cellar">
-            <span>My Beer Cellar</span>
-          </a>
-          <a data-css-ccyhl8="" href="/my-year-in-beer/526437/" alt="my 2017">
-            <span>My 2017</span>
-          </a>
-        </div>
-        <div data-css-1nvvukq="">
-          <a data-css-ccyhl8="" href="/profile" alt="account settings">
-            <span data-css-12alag6="">
-              <img id="accountSettings" data-css-66ke4m="" alt="settings icon">
-              <script type="text/javascript">
-                document.getElementById('accountSettings').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/settings-icon.608c532a.svg`);
-              </script>
-              <span>Account Settings</span>
-            </span>
-            <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
-          </a>
-        </div>
-        <div data-css-1nvvukq="">
-          <a data-css-ccyhl8="" href="/user/526437/friends/" alt="manage people followed">
-            <span>Manage People Followed</span>
-          </a><a data-css-ccyhl8="" href="/user/526437/following/" alt="manage breweries followed">
-            <span>Manage Breweries Followed</span>
-          </a>
-        </div>
-        <div data-css-1nvvukq="">
-          <a data-css-ccyhl8="" alt="log out">
-            <span data-css-12alag6="">
-            <img id="imgLogout" data-css-66ke4m="" alt="logout icon">
+  <div data-css-un0k7a="">
+    <div data-css-1qzmcjt=""></div>
+    <div id="menuBkg" data-css-1c3acsf=""></div>
+    <a id="lnkViewProfile" data-css-1rkqo8u="" href="/user/{userid}/" alt="view profile">
+      <img id="menuUserImage" data-css-1mct221="" />
+        <div data-css-18nrmr="">
+          <span data-css-s3kr6a="">auth0</span>
+          <span data-css-13u11sg="">
+            <span>My Profile</span>
+            <img id="blueRightCaret" data-css-y7rond="">
             <script type="text/javascript">
-              document.getElementById('imgLogout').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/logout-icon.90ee6cef.svg`);
+              document.getElementById('blueRightCaret').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/blue_right_caret.88ec628f.svg`);
             </script>
-            <span>Log Out</span>
           </span>
-            <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
-          </a>
         </div>
+      </a>
+      <div data-css-1nvvukq="">
+        <a id="lnkLatest" data-css-ccyhl8="" href="/latest" alt="latest">
+          <span>Latest Activity</span>
+        </a>
+        <a id="lnkLatestBreweries" data-css-ccyhl8="" href="/latest/breweries/new" alt="new releases">
+          <span>New Releases</span>
+        </a>
+      </div>
+      <div data-css-1nvvukq="">
+        <a id="lnkMyRatings" data-css-ccyhl8="" href="/user/{userid}/beer-ratings/" alt="my ratings">
+          <span>My Beer Ratings</span>
+        </a>
+        <a id="lnkMyPlaceRatings" data-css-ccyhl8="" href="/user/{userid}/place-ratings/" alt="my place ratings">
+          <span>My Place Ratings</span>
+        </a>
+        <a id="lnkMyBreweries" data-css-ccyhl8="" href="/user/{userid}/breweries/" alt="my breweries">
+          <span>My Breweries</span>
+        </a>
+        <a id="lnkMyStyleRatings" data-css-ccyhl8="" href="/user/{userid}/style-ratings/" alt="my beer styles">
+          <span>My Beer Styles</span>
+        </a>
+        <a id="lnkMyCountries" data-css-ccyhl8="" href="/user/{userid}/countries-rated/" alt="my countries">
+          <span>My Countries &amp; States</span>
+        </a>
+        <a id="lnkMyBeerCellar" data-css-ccyhl8="" href="/user/{userid}/beer-cellar/" alt="my beer cellar">
+          <span>My Beer Cellar</span>
+        </a>
+        <a id="lnkMyYear" data-css-ccyhl8="" href="/my-year-in-beer/{userid}/" alt="my 2017">
+          <span>My 2017</span>
+        </a>
+      </div>
+      <div data-css-1nvvukq="">
+        <a id="lnkProfile" data-css-ccyhl8="" href="/profile" alt="account settings">
+          <span data-css-12alag6="">
+            <img id="accountSettings" data-css-66ke4m="" alt="settings icon">
+            <script type="text/javascript">
+              document.getElementById('accountSettings').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/settings-icon.608c532a.svg`);
+            </script>
+            <span>Account Settings</span>
+          </span>
+          <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+        </a>
+      </div>
+      <div data-css-1nvvukq="">
+        <a id="lnkMyFriends" data-css-ccyhl8="" href="/user/{userid}/friends/" alt="manage people followed">
+          <span>Manage People Followed</span>
+        </a>
+        <a id="lnkMyFollowing" data-css-ccyhl8="" href="/user/{userid}/following/" alt="manage breweries followed">
+          <span>Manage Breweries Followed</span>
+        </a>
+      </div>
+      <div data-css-1nvvukq="">
+        <a data-css-ccyhl8="" alt="log out">
+          <span data-css-12alag6="">
+          <img id="imgLogout" data-css-66ke4m="" alt="logout icon">
+          <script type="text/javascript">
+            document.getElementById('imgLogout').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/logout-icon.90ee6cef.svg`);
+          </script>
+          <span>Log Out</span>
+        </span>
+          <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+        </a>
+      </div>
     </div>
 </div>
 <script type="text/javascript">
+  var root = `//${window.location.host.replace('community.','www.')}`
+  document.getElementById('lnkLatest').setAttribute('href', `${root}/latest`)
+  document.getElementById('lnkLatest').setAttribute('style', 'color: #231f20;')
+  document.getElementById('lnkLatestBreweries').setAttribute('href', `${root}/latest/breweries/new`)
+  document.getElementById('lnkLatestBreweries').setAttribute('style', 'color: #231f20;')
+  document.getElementById('lnkProfile').setAttribute('href', `${root}/profile`)
+  document.getElementById('lnkProfile').setAttribute('style', 'color: #231f20;')
+
   function toggleMenu() {
     var menu = document.getElementById('menu');
     var visible = menu.getAttribute('data-visible')
@@ -259,6 +276,6 @@
 
   var links = document.getElementsByName('imgRightCaret');
   for(i = 0; i < links.length; i++) {
-    links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
+    links[i].setAttribute('src', `//${root}/static/media/grey_right_caret.e5fa9b54.svg`);
   }
 </script>

@@ -18,6 +18,11 @@ if (user != null) {
   const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${user.username}`;
   document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
   document.getElementById('menuUserImage').setAttribute('src', imageUrl);
+console.log(user)
+  const userLinks = document.getElementsByTag('a')
+  for(int i = 0; i < userLinks.length; i++) {
+    userLinks[i].setAttribute(href, href.replace('{userid}', '123'))
+  }
 }
 </script>
 
