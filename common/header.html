@@ -146,12 +146,14 @@
 <script type="text/javascript">
   function toggleBurgerMenu() {
     var burgerMenu = document.getElementById('burgerMenu');
-    var hidden = burgerMenu.offsetParent === null;
-    console.log(hidden);
+    var visible = burgerMenu.getAttribute('data-visible')
+    var hidden = visible == null || visible == 'false'
     if (hidden) {
       burgerMenu.setAttribute('style', 'display: flex;');
+      burgerMenu.setAttribute('data-visible', 'true');
     } else {
       burgerMenu.setAttribute('style', 'display: none;');
+      burgerMenu.setAttribute('data-visible', 'false');
     }
   }
   document.getElementById('headerBurgerIcon').addEventListener('click', toggleBurgerMenu);
