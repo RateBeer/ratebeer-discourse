@@ -121,7 +121,7 @@
     </script>
   </div>
 </nav>
-<div id="burgerMenu" data-css-1m2qpe1="">
+<div id="burgerMenu" data-css-1m2qpe1="" style="display: none;">
   <div data-css-xjtqwl="">
     <div id="burgerMenuBkg" data-css-1c3acsf=""></div>
     <div data-css-1m8fupg=""></div>
@@ -158,14 +158,9 @@
   }
   document.getElementById('headerBurgerIcon').addEventListener('click', toggleBurgerMenu);
   document.getElementById('burgerMenuBkg').addEventListener('click', toggleBurgerMenu);
-  var links = document.getElementsByName('imgRightCaret');
-  for(i = 0; i < links.length; i++) {
-    links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
-  }
-  document.getElementById('burgerMenu').setAttribute('style', 'display: none;');
 </script>
 
-<div id="menu" data-css-1m2qpe1="">
+<div id="menu" data-css-1m2qpe1="" style="display: none;">
     <div data-css-un0k7a="">
         <div data-css-1qzmcjt=""></div>
         <div id="menuBkg" data-css-1c3acsf=""></div>
@@ -218,7 +213,7 @@
             <span data-css-12alag6="">
               <img id="accountSettings" data-css-66ke4m="" alt="settings icon">
               <script type="text/javascript">
-                document.getElementById('imgLogout').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/settings-icon.608c532a.svg`);
+                document.getElementById('accountSettings').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/settings-icon.608c532a.svg`);
               </script>
               <span>Account Settings</span>
             </span>
@@ -262,5 +257,8 @@
   document.getElementById('headerUserIcon').addEventListener('click', toggleMenu);
   document.getElementById('menuBkg').addEventListener('click', toggleBurgerMenu);
 
-  document.getElementById('menu').setAttribute('style', 'display: none;');
+  var links = document.getElementsByName('imgRightCaret');
+  for(i = 0; i < links.length; i++) {
+    links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
+  }
 </script>
