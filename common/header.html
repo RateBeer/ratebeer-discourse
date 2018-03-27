@@ -45,10 +45,10 @@
       </script>
     </div>
     <script type="text/javascript">
-      function burgerClick() {
+      function toggleBurgerMenu() {
         window.alert('burger');
       }
-      document.getElementById('headerBurgerIcon').setAttribute('onclick', burgerClick);
+      document.getElementById('headerBurgerIcon').setAttribute('onclick', toggleBurgerMenu);
     </script>
     <div data-css-cmdpdg="" id="noBurger">
       <a id="lnkRatings" data-css-1tzz3vk="" href="/beer-ratings/">
@@ -150,8 +150,10 @@
   </div>
 </div>
 <script type="text/javascript">
+  document.getElementById('burgerMenu').setAttribute('onclick', toggleBurgerMenu)
   var links = document.getElementsByName('imgRightCaret');
   for(i = 0; i < links.length; i++) {
     links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
   }
+  document.getElementById('burgerMenu').setAttribute('style', 'display: none;');
 </script>
