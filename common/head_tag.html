@@ -18,7 +18,7 @@ if (user != null) {
   const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${user.username}`;
   document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
   document.getElementById('menuUserImage').setAttribute('src', imageUrl);
-  
+
   const siteUserFields = Discourse.Site.currentProp('user_fields');
   if (!Ember.isEmpty(siteUserFields)) {
     const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
@@ -102,4 +102,8 @@ api.modifyClass('model:user', {
     var url = 'https://' + window.location.hostname.replace('community.', 'www.') + '/search?q=';
     document.location = encodeURI(url + txt);
   }
+
+  $.ajax("/session/current").then(function(result) {
+    console.log(result.current_user.custom_fields);
+  });
 </script>
