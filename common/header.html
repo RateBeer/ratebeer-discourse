@@ -145,8 +145,15 @@
 </div>
 <script type="text/javascript">
   function toggleBurgerMenu() {
-    console.log('burger');
+    var burgerMenu = document.getElementById('burgerMenu');
+    var hidden = burgerMenu.offsetParent === null;
+    if (hidden) {
+      document.getElementById('burgerMenu').setAttribute('style', 'display: flex;');
+    } else {
+      document.getElementById('burgerMenu').setAttribute('style', 'display: none;');
+    }
   }
+  document.getElementById('headerBurgerIcon').addEventListener('click', toggleBurgerMenu);
   document.getElementById('burgerMenu').addEventListener('click', toggleBurgerMenu);
   var links = document.getElementsByName('imgRightCaret');
   for(i = 0; i < links.length; i++) {
