@@ -24,7 +24,8 @@ if (user != null) {
     const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
     if (externalUserIdField) {
       const userFieldId = externalUserIdField.get('id');
-      const userFields = this.get('user_fields');
+      console.log(user);
+      const userFields = user.get('user_fields');
       if (userFields && userFields[userFieldId]) {
         const userLinks = document.getElementsByTagName('a');
         for(i = 0; i < userLinks.length; i++) {
