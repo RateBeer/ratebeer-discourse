@@ -85,7 +85,8 @@
           document.getElementById('headerSignUp').setAttribute('style', 'display: none;')
         }
       }
-      window.addEventListener("resize", reSizeHeader)()
+      window.addEventListener("resize", reSizeHeader);
+      reSizeHeader();
 
       // Hide/show login menu
       function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
