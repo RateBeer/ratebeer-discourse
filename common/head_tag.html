@@ -88,10 +88,10 @@ $(document).ready(function(){
   $.ajax("/session/current").then(function(result) {
     if (result && result.current_user) {
       const userid = result.current_user.custom_fields.user_field_2;
-      const userLinks = document.getElementsByName('a');
+      const userLinks = document.getElementsByName('userLink');
       console.log(userLinks.length)
       for(i = 0; i < userLinks.length; i++) {
-        userLinks[i].setAttribute(href, href.replace('{userid}', userid));
+        userLinks[i].setAttribute(href, href.replace('__USER_ID__', userid));
       }
     }
   })
