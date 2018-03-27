@@ -18,7 +18,21 @@ if (user != null) {
   const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${user.username}`;
   document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
   document.getElementById('menuUserImage').setAttribute('src', imageUrl);
-  console.log(user);
+  
+  const siteUserFields = Discourse.Site.currentProp('user_fields');
+  if (!Ember.isEmpty(siteUserFields)) {
+    const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
+    if (externalUserIdField) {
+      const userFieldId = externalUserIdField.get('id');
+      const userFields = this.get('user_fields');
+      if (userFields && userFields[userFieldId]) {
+        const userLinks = document.getElementsByTagName('a');
+        for(i = 0; i < userLinks.length; i++) {
+          userLinks[i].setAttribute(href, href.replace('{userid}', userFields[userFieldId]));
+        }
+      }
+    }
+  }
 }
 </script>
 
