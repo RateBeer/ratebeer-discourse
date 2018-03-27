@@ -77,11 +77,10 @@ api.modifyClass('model:user', {
 </script>
 
 <script>
-  function beerSearch(e) {
+  function beerSearch(e, elem) {
     if (e.keyCode != 13) return
-    var txt = document.getElementById('txtBeerSearch').value;
     var url = 'https://' + window.location.hostname.replace('community.', 'www.') + '/search?q=';
-    document.location = encodeURI(url + txt);
+    document.location = encodeURI(url + elem.value);
   }
 
   $(document).ready(function(){
