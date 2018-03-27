@@ -91,7 +91,8 @@ $(document).ready(function(){
       const userLinks = document.getElementsByName('userLink');
       console.log(userLinks.length)
       for(i = 0; i < userLinks.length; i++) {
-        userLinks[i].setAttribute(href, href.replace('__USER_ID__', userid));
+        const href = userLinks[i].getAttribute('href');
+        userLinks[i].setAttribute('href', href.replace('__USER_ID__', userid));
       }
     }
   })
