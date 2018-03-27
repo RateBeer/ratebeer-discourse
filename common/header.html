@@ -84,14 +84,14 @@
       function reSizeHeader() {
         // SMALL
         document.getElementById('headerSearchIcon').setAttribute('style', 'display: flex;');
-        document.getElementById('imgSearch').setAttribute('style', 'display: none;');
+        document.getElementById('noBurger').setAttribute('style', 'display: none;');
+        document.getElementById('headerSignUp').setAttribute('style', 'display: none;');
+        document.getElementById('phoenixHeaderForm').setAttribute('style', 'display: none;');
 
         if (window.innerWidth > 800) {
           // MEDIUM
-          document.getElementById('imgSearch').setAttribute('style', 'display: flex;');
-
+          document.getElementById('phoenixHeaderForm').setAttribute('style', 'display: flex;');
           document.getElementById('headerSearchIcon').setAttribute('style', 'display: none;');
-          document.getElementById('headerSignUp').setAttribute('style', 'display: none;');
         }
 
         if (window.innerWidth > 1195) {
