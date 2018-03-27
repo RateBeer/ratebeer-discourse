@@ -19,10 +19,6 @@ if (user != null) {
   document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
   document.getElementById('menuUserImage').setAttribute('src', imageUrl);
   console.log(user);
-  const userLinks = document.getElementsByTagName('a');
-  for(int i = 0; i < userLinks.length; i++) {
-    userLinks[i].setAttribute(href, href.replace('{userid}', '123'));
-  }
 }
 </script>
 
