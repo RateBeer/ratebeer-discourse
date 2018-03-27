@@ -24,6 +24,7 @@ if (user != null) {
     const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
     if (externalUserIdField) {
       const userFieldId = externalUserIdField.get('id');
+      console.log(userFieldId);
       console.log(user);
       const userFields = user.get('user_fields');
       if (userFields && userFields[userFieldId]) {
@@ -31,6 +32,8 @@ if (user != null) {
         for(i = 0; i < userLinks.length; i++) {
           userLinks[i].setAttribute(href, href.replace('{userid}', userFields[userFieldId]));
         }
+      } else {
+        console.log('no fields');
       }
     }
   }
