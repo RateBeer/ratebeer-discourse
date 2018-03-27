@@ -123,7 +123,7 @@
 </nav>
 <div id="burgerMenu" data-css-1m2qpe1="">
   <div data-css-xjtqwl="">
-    <div data-css-1c3acsf=""></div>
+    <div id="burgerMenuBkg" data-css-1c3acsf=""></div>
     <div data-css-1m8fupg=""></div>
     <a data-css-12n8zhl="" href="/beer-ratings/">
       <span>Ratings</span>
@@ -154,7 +154,7 @@
     }
   }
   document.getElementById('headerBurgerIcon').addEventListener('click', toggleBurgerMenu);
-  document.getElementById('burgerMenu').addEventListener('click', toggleBurgerMenu);
+  document.getElementById('burgerMenuBkg').addEventListener('click', toggleBurgerMenu);
   var links = document.getElementsByName('imgRightCaret');
   for(i = 0; i < links.length; i++) {
     links[i].setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey_right_caret.e5fa9b54.svg`);
