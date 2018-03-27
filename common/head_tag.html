@@ -84,11 +84,16 @@ api.modifyClass('model:user', {
     document.location = encodeURI(url + txt);
   }
 
+$(document).ready(function(){
   $.ajax("/session/current").then(function(result) {
-    const userid = result.current_user.custom_fields.user_field_2;
-    const userLinks = document.getElementsByTagName('a');
-    for(i = 0; i < userLinks.length; i++) {
-      userLinks[i].setAttribute(href, href.replace('{userid}', userid));
+    if (result && result.current_user) {
+      const userid = result.current_user.custom_fields.user_field_2;
+      const userLinks = document.getElementsByName('a');
+      console.log(userLinks.length)
+      for(i = 0; i < userLinks.length; i++) {
+        userLinks[i].setAttribute(href, href.replace('{userid}', userid));
+      }
     }
-  });
+  })
+});
 </script>
