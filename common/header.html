@@ -2,7 +2,7 @@
   <a data-css-ctdbf6="" href="/">
     <img id="imgLogo" data-css-1yksdj1="" alt="Header Logo" title="RateBeer">
     <script type="text/javascript">
-      document.getElementById('imgLogo').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/HeaderLogo.846ca103.svg`)
+      document.getElementById('imgLogo').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/HeaderLogo.846ca103.svg`)
     </script>
   </a>
   <div data-css-w1hgs3="">
@@ -10,11 +10,11 @@
       <div data-css-gqw6cb="">
         <img id="imgSearchGrey" data-css-3e9tas="" alt="search icon">
         <script type="text/javascript">
-          document.getElementById('imgSearchGrey').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey-search.9417d93b.svg`)
+          document.getElementById('imgSearchGrey').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/grey-search.9417d93b.svg`)
         </script>
       </div>
-      <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
-        spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" onkeyup="beerSearch(event, this)">
+      <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
+        placeholder="Search for Beers, Breweries, or Bars…" onkeyup="beerSearch(event, this)">
       <script type="text/javascript">
         // Override discourse css
         var customSearchStyle = `
@@ -36,13 +36,13 @@
     <div data-css-5bm5ty="" id="headerSearchIcon">
       <img id="imgSearchWhite" alt="search">
       <script type="text/javascript">
-        document.getElementById('imgSearchWhite').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-search.15a47611.svg`)
+        document.getElementById('imgSearchWhite').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/white-search.15a47611.svg`)
       </script>
     </div>
     <div data-css-5bm5ty="" id="headerBurgerIcon">
       <img alt="navigation" id="imgNav">
       <script type="text/javascript">
-        document.getElementById('imgNav').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/white-hamburger.4fb38f1c.svg`)
+        document.getElementById('imgNav').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/white-hamburger.4fb38f1c.svg`)
       </script>
     </div>
     <div data-css-cmdpdg="" id="noBurger">
@@ -59,7 +59,7 @@
         <span>Places</span>
       </a>
       <script type="text/javascript">
-        var root = `//${window.location.host.replace('community.','www.')}`;
+        var root = `//${window.location.host.replace('community.', 'www.')}`;
         document.getElementById('lnkRatings').setAttribute('href', `${root}/beer-ratings/`);
         document.getElementById('lnkRatings').setAttribute('style', 'color: #fff;');
         document.getElementById('lnkUsers').setAttribute('href', `${root}/users`);
@@ -110,14 +110,14 @@
       reSizeHeader();
 
       // Hide/show login menu
-      function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+      function C(k) { return (document.cookie.match('(^|; )' + k + '=([^;]*)') || 0)[2] }
       if (C('session')) {
         document.getElementById('loggedOutSection').setAttribute('style', 'display: none;');
       } else {
         document.getElementById('loggedInSection').setAttribute('style', 'display: none;');
         document.getElementById('headerLogIn').setAttribute('href', `/session/sso?return_path=${window.location.host}`);
         document.getElementById('headerLogIn').setAttribute('style', 'color: #fff;');
-        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.','www.')}/signup?redirectUrl=${window.location.host}`);
+        document.getElementById('headerSignUp').setAttribute('href', `//${window.location.host.replace('community.', 'www.')}/signup?redirectUrl=${window.location.host}`);
       }
     </script>
   </div>
@@ -134,16 +134,18 @@
       <span>Community</span>
       <img name="imgRightCaret" id="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
-    <a id="lnkBurgerEvents" data-css-12n8zhl="" href="/events"><span>Events</span>
+    <a id="lnkBurgerEvents" data-css-12n8zhl="" href="/events">
+      <span>Events</span>
       <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
-    <a id="lnkBurgerPlaces" data-css-12n8zhl="" href="/places/browse/"><span>Places</span>
-      <img name="imgRightCaret"  data-css-2njx2p="" alt=" ">
+    <a id="lnkBurgerPlaces" data-css-12n8zhl="" href="/places/browse/">
+      <span>Places</span>
+      <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
     </a>
   </div>
 </div>
 <script type="text/javascript">
-  var root = `//${window.location.host.replace('community.','www.')}`;
+  var root = `//${window.location.host.replace('community.', 'www.')}`;
   document.getElementById('lnkBurgerRatings').setAttribute('href', `${root}/beer-ratings/`);
   document.getElementById('lnkBurgerRatings').setAttribute('style', 'color: #231f20;');
   document.getElementById('lnkBurgerUsers').setAttribute('href', `${root}/users`);
@@ -175,84 +177,84 @@
     <div id="menuBkg" data-css-1c3acsf=""></div>
     <a name="userLink" data-css-1rkqo8u="" href="/user/__USER_ID__/" alt="view profile">
       <img id="menuUserImage" data-css-1mct221="" />
-        <div data-css-18nrmr="">
-          <span data-css-s3kr6a="">auth0</span>
-          <span data-css-13u11sg="">
-            <span>My Profile</span>
-            <img id="blueRightCaret" data-css-y7rond="">
-            <script type="text/javascript">
-              document.getElementById('blueRightCaret').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/blue_right_caret.88ec628f.svg`);
-            </script>
-          </span>
-        </div>
+      <div data-css-18nrmr="">
+        <span id="usernameSpan" data-css-s3kr6a=""></span>
+        <span data-css-13u11sg="">
+          <span>My Profile</span>
+          <img id="blueRightCaret" data-css-y7rond="">
+          <script type="text/javascript">
+            document.getElementById('blueRightCaret').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/blue_right_caret.88ec628f.svg`);
+          </script>
+        </span>
+      </div>
+    </a>
+    <div data-css-1nvvukq="">
+      <a id="lnkLatest" data-css-ccyhl8="" href="/latest" alt="latest">
+        <span>Latest Activity</span>
       </a>
-      <div data-css-1nvvukq="">
-        <a id="lnkLatest" data-css-ccyhl8="" href="/latest" alt="latest">
-          <span>Latest Activity</span>
-        </a>
-        <a id="lnkLatestBreweries" data-css-ccyhl8="" href="/latest/breweries/new" alt="new releases">
-          <span>New Releases</span>
-        </a>
-      </div>
-      <div data-css-1nvvukq="">
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/beer-ratings/" alt="my ratings">
-          <span>My Beer Ratings</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/place-ratings/" alt="my place ratings">
-          <span>My Place Ratings</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/breweries/" alt="my breweries">
-          <span>My Breweries</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/style-ratings/" alt="my beer styles">
-          <span>My Beer Styles</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/countries-rated/" alt="my countries">
-          <span>My Countries &amp; States</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/beer-cellar/" alt="my beer cellar">
-          <span>My Beer Cellar</span>
-        </a>
-        <a  name="userLink" data-css-ccyhl8="" href="/my-year-in-beer/__USER_ID__/" alt="my 2017">
-          <span>My 2017</span>
-        </a>
-      </div>
-      <div data-css-1nvvukq="">
-        <a id="lnkProfile" data-css-ccyhl8="" href="/profile" alt="account settings">
-          <span data-css-12alag6="">
-            <img id="accountSettings" data-css-66ke4m="" alt="settings icon">
-            <script type="text/javascript">
-              document.getElementById('accountSettings').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/settings-icon.608c532a.svg`);
-            </script>
-            <span>Account Settings</span>
-          </span>
-          <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
-        </a>
-      </div>
-      <div data-css-1nvvukq="">
-        <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/friends/" alt="manage people followed">
-          <span>Manage People Followed</span>
-        </a>
-        <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/following/" alt="manage breweries followed">
-          <span>Manage Breweries Followed</span>
-        </a>
-      </div>
-      <div data-css-1nvvukq="">
-        <a id="lnkLogout" data-css-ccyhl8="" alt="log out">
-          <span data-css-12alag6="">
+      <a id="lnkLatestBreweries" data-css-ccyhl8="" href="/latest/breweries/new" alt="new releases">
+        <span>New Releases</span>
+      </a>
+    </div>
+    <div data-css-1nvvukq="">
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/beer-ratings/" alt="my ratings">
+        <span>My Beer Ratings</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/place-ratings/" alt="my place ratings">
+        <span>My Place Ratings</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/breweries/" alt="my breweries">
+        <span>My Breweries</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/style-ratings/" alt="my beer styles">
+        <span>My Beer Styles</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/countries-rated/" alt="my countries">
+        <span>My Countries &amp; States</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/beer-cellar/" alt="my beer cellar">
+        <span>My Beer Cellar</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/my-year-in-beer/__USER_ID__/" alt="my 2017">
+        <span>My 2017</span>
+      </a>
+    </div>
+    <div data-css-1nvvukq="">
+      <a id="lnkProfile" data-css-ccyhl8="" href="/profile" alt="account settings">
+        <span data-css-12alag6="">
+          <img id="accountSettings" data-css-66ke4m="" alt="settings icon">
+          <script type="text/javascript">
+            document.getElementById('accountSettings').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/settings-icon.608c532a.svg`);
+          </script>
+          <span>Account Settings</span>
+        </span>
+        <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+      </a>
+    </div>
+    <div data-css-1nvvukq="">
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/friends/" alt="manage people followed">
+        <span>Manage People Followed</span>
+      </a>
+      <a name="userLink" data-css-ccyhl8="" href="/user/__USER_ID__/following/" alt="manage breweries followed">
+        <span>Manage Breweries Followed</span>
+      </a>
+    </div>
+    <div data-css-1nvvukq="">
+      <a id="lnkLogout" data-css-ccyhl8="" alt="log out">
+        <span data-css-12alag6="">
           <img id="imgLogout" data-css-66ke4m="" alt="logout icon">
           <script type="text/javascript">
-            document.getElementById('imgLogout').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/logout-icon.90ee6cef.svg`);
+            document.getElementById('imgLogout').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/logout-icon.90ee6cef.svg`);
           </script>
           <span>Log Out</span>
         </span>
-          <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
-        </a>
-      </div>
+        <img name="imgRightCaret" data-css-2njx2p="" alt=" ">
+      </a>
     </div>
+  </div>
 </div>
 <script type="text/javascript">
-  var root = `//${window.location.host.replace('community.','www.')}`;
+  var root = `//${window.location.host.replace('community.', 'www.')}`;
   document.getElementById('lnkLatest').setAttribute('href', `${root}/latest`);
   document.getElementById('lnkLatest').setAttribute('style', 'color: #231f20;');
   document.getElementById('lnkLatestBreweries').setAttribute('href', `${root}/latest/breweries/new`);
@@ -278,7 +280,7 @@
   document.getElementById('menuBkg').addEventListener('click', toggleMenu);
 
   var links = document.getElementsByName('imgRightCaret');
-  for(i = 0; i < links.length; i++) {
+  for (i = 0; i < links.length; i++) {
     links[i].setAttribute('src', `//${root}/static/media/grey_right_caret.e5fa9b54.svg`);
   }
 </script>
@@ -288,13 +290,18 @@
     <div data-css-gqw6cb="">
       <img id="imgGreySearch" src="/static/media/grey-search.9417d93b.svg" data-css-3e9tas="" alt="search icon">
       <script type="text/javascript">
-        document.getElementById('imgGreySearch').setAttribute('src', `//${window.location.host.replace('community.','www.')}/static/media/grey-search.9417d93b.svg`);
+        document.getElementById('imgGreySearch').setAttribute('src', `//${window.location.host.replace('community.', 'www.')}/static/media/grey-search.9417d93b.svg`);
       </script>
     </div>
-    <input type="search" data-css-ilkk6k="" id="phoenixHeaderSearch" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="" onkeyup="beerSearch(event, this)">
+    <input type="search" data-css-ilkk6k="" id="phoenixHeaderSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
+      spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="" onkeyup="beerSearch(event, this)">
     <div data-css-18uzsga="">
-      <div id="btnClear" data-css-xnuva7=""><span class="fa fa-times-circle fa-lg"></span></div>
-      <div id="btnCancel" data-css-85zn9g=""><span>Cancel</span></div>
+      <div id="btnClear" data-css-xnuva7="">
+        <span class="fa fa-times-circle fa-lg"></span>
+      </div>
+      <div id="btnCancel" data-css-85zn9g="">
+        <span>Cancel</span>
+      </div>
     </div>
   </form>
 </div>

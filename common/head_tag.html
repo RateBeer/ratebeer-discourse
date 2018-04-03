@@ -1,10 +1,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous">
-</script>
+  crossorigin="anonymous">
+  </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script>
   Discourse._registerPluginCode('0.4', function (api) {
-      api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', 'www.'));
+    api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', 'www.'));
   });
 </script>
 <script type="text/discourse-plugin" version="0.8.9">
@@ -83,16 +83,20 @@ api.modifyClass('model:user', {
     document.location = encodeURI(url + elem.value);
   }
 
-  $(document).ready(function(){
-    $.ajax("/session/current").then(function(result) {
+  $(document).ready(function () {
+    $.ajax("/session/current").then(function (result) {
       if (result && result.current_user) {
-        const root = `//${window.location.host.replace('community.','www.')}`
+        const root = `//${window.location.host.replace('community.', 'www.')}`
         const userid = result.current_user.custom_fields.user_field_2;
         const userLinks = document.getElementsByName('userLink');
-        for(i = 0; i < userLinks.length; i++) {
+        for (i = 0; i < userLinks.length; i++) {
           const href = userLinks[i].getAttribute('href');
           userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
         }
+        console.log(result.current_user);
+        const usernameSpan = document.getElementById('usernameSpan');
+        console.log(usernameSpan)
+        //usernameSpan.value('result.current_user');
       }
     })
   });
