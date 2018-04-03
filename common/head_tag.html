@@ -94,20 +94,17 @@ api.modifyClass('model:user', {
       }
       return null;
     }
+  }
 
-    $(document).ready(function () {
-      $.ajax("/session/current").then(function (result) {
-        if (result && result.current_user) {
-          const root = `//${window.location.host.replace('community.', 'www.')}`
-          const userid = result.current_user.custom_fields.user_field_2 || getUserIdFromSession();
-          const userLinks = document.getElementsByName('userLink');
-          for (i = 0; i < userLinks.length; i++) {
-            const href = userLinks[i].getAttribute('href');
-            userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
-          }
-          const usernameSpan = document.getElementById('usernameSpan');
-          usernameSpan.innerHTML = result.current_user.username;
-        }
-      })
-    });
+  $(document).ready(function () {
+    const root = `//${window.location.host.replace('community.', 'www.')}`
+    const userid = getUserIdFromSession();
+    const userLinks = document.getElementsByName('userLink');
+    for (i = 0; i < userLinks.length; i++) {
+      const href = userLinks[i].getAttribute('href');
+      userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
+    }
+    const usernameSpan = document.getElementById('usernameSpan');
+    usernameSpan.innerHTML = result.current_user.username;
+  });
 </script>
