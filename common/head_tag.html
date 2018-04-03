@@ -78,19 +78,36 @@ api.modifyClass('model:user', {
     document.location = encodeURI(url + elem.value);
   }
 
-  $(document).ready(function () {
-    $.ajax("/session/current").then(function (result) {
-      if (result && result.current_user) {
-        const root = `//${window.location.host.replace('community.', 'www.')}`
-        const userid = result.current_user.custom_fields.user_field_2;
-        const userLinks = document.getElementsByName('userLink');
-        for (i = 0; i < userLinks.length; i++) {
-          const href = userLinks[i].getAttribute('href');
-          userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
-        }
-        const usernameSpan = document.getElementById('usernameSpan');
-        usernameSpan.innerHTML = result.current_user.username;
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  function getUserIdFromSession() {
+    const session = decodeURIComponent(getCookie('session'));
+    if (session) {
+      try {
+        return JSON.parse(atob(session)).userId;
+      } catch (e) {
+        console.error(e);
       }
-    })
-  });
+      return null;
+    }
+
+    $(document).ready(function () {
+      $.ajax("/session/current").then(function (result) {
+        if (result && result.current_user) {
+          const root = `//${window.location.host.replace('community.', 'www.')}`
+          const userid = result.current_user.custom_fields.user_field_2 || getUserIdFromSession();
+          const userLinks = document.getElementsByName('userLink');
+          for (i = 0; i < userLinks.length; i++) {
+            const href = userLinks[i].getAttribute('href');
+            userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
+          }
+          const usernameSpan = document.getElementById('usernameSpan');
+          usernameSpan.innerHTML = result.current_user.username;
+        }
+      })
+    });
 </script>
