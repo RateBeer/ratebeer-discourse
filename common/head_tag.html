@@ -84,11 +84,11 @@ api.modifyClass('model:user', {
     if (parts.length == 2) return parts.pop().split(";").shift();
   }
 
-  function getUserIdFromSession() {
+  function getSession() {
     const session = decodeURIComponent(getCookie('session'));
     if (session) {
       try {
-        return JSON.parse(atob(session)).userId;
+        return JSON.parse(atob(session))
       } catch (e) {
         console.error(e);
       }
@@ -98,13 +98,13 @@ api.modifyClass('model:user', {
 
   $(document).ready(function () {
     const root = `//${window.location.host.replace('community.', 'www.')}`
-    const userid = getUserIdFromSession();
+    const session = getSession();
     const userLinks = document.getElementsByName('userLink');
     for (i = 0; i < userLinks.length; i++) {
       const href = userLinks[i].getAttribute('href');
-      userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
+      userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', session.userId));
     }
     const usernameSpan = document.getElementById('usernameSpan');
-    usernameSpan.innerHTML = result.current_user.username;
+    usernameSpan.innerHTML = session.username;
   });
 </script>
