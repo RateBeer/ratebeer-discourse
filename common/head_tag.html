@@ -2,11 +2,6 @@
   crossorigin="anonymous">
   </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
-<script>
-  Discourse._registerPluginCode('0.4', function (api) {
-    api.changeWidgetSetting('home-logo', 'href', 'https://' + window.location.hostname.replace('community.', 'www.'));
-  });
-</script>
 <script type="text/discourse-plugin" version="0.8.9">
 var token = Cookies.get('token');
 if (api.getCurrentUser() == null && token != null && token.length > 0) {
