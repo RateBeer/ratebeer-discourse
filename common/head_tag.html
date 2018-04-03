@@ -93,10 +93,8 @@ api.modifyClass('model:user', {
           const href = userLinks[i].getAttribute('href');
           userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', userid));
         }
-        console.log(result.current_user);
         const usernameSpan = document.getElementById('usernameSpan');
-        console.log(usernameSpan)
-        //usernameSpan.value('result.current_user');
+        usernameSpan.value(result.current_user.name);
       }
     })
   });
