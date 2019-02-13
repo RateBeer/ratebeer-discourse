@@ -7,42 +7,7 @@
   <script type="text/javascript">
     document.getElementById('lnkLogo').setAttribute('href', `//${window.location.host.replace('community.', 'www.')}`)
   </script>
-  <div data-css-w1hgs3="">
-    <form id="phoenixHeaderForm" autocomplete="off" data-css-ypxlhu="" action=".">
-      <div data-css-gqw6cb="">
-        <div id="imgSearchGrey" data-css-3e9tas="" alt="search icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-            <path fill="#5C5C5C" fill-rule="evenodd" d="M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z"/>
-          </svg>
-        </div>    
-      </div>
-      <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
-        placeholder="Search for Beers, Breweries, or Bars…" onkeyup="beerSearch(event, this)">
-      <script type="text/javascript">
-        // Override discourse css
-        var customSearchStyle = `
-        font-size: 14px;
-        color: #4a4a4a;
-        padding: 0px 6px;
-        -webkit-appearance: none;
-        border-width: initial;
-        border-style: none;
-        border-color: initial;
-        border-image: initial;
-        margin-bottom: 0px;
-        margin-top: 0px`;
-        document.getElementById('txtBeerSearch').setAttribute('style', customSearchStyle);
-      </script>
-    </form>
-  </div>
   <div data-css-derz9x="">
-    <div data-css-5bm5ty="" id="headerSearchIcon">
-      <div id="imgSearchWhite" alt="search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-          <path fill="#FFF" fill-rule="evenodd" d="M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z"/>
-        </svg>
-      </div>
-    </div>
     <div data-css-5bm5ty="" id="headerBurgerIcon">
       <div alt="navigation" id="imgNav">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16">
@@ -92,7 +57,6 @@
     <script type="text/javascript">
       function reSizeHeader() {
         // SMALL
-        document.getElementById('headerSearchIcon').setAttribute('style', 'display: flex;');
         document.getElementById('headerBurgerIcon').setAttribute('style', 'display: flex;');
         document.getElementById('noBurger').setAttribute('style', 'display: none;');
         document.getElementById('headerSignUp').setAttribute('style', 'display: none;');
@@ -102,7 +66,6 @@
           // MEDIUM
           document.getElementById('phoenixHeaderForm').setAttribute('style', 'display: flex;');
           document.getElementById('headerBurgerIcon').setAttribute('style', 'display: flex;');
-          document.getElementById('headerSearchIcon').setAttribute('style', 'display: none;');
         }
 
         if (window.innerWidth > 1195) {
@@ -110,7 +73,6 @@
           document.getElementById('noBurger').setAttribute('style', 'display: flex;');
           document.getElementById('headerSignUp').setAttribute('style', 'display: flex;');
 
-          document.getElementById('headerSearchIcon').setAttribute('style', 'display: none;');
           document.getElementById('headerBurgerIcon').setAttribute('style', 'display: none;');
         }
       }
@@ -257,7 +219,7 @@
         <div name="imgRightCaret" data-css-2njx2p="" alt=" ">
           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
             <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-          </svg>          
+          </svg>
         </div>
       </a>
     </div>
@@ -282,7 +244,7 @@
         <div name="imgRightCaret" data-css-2njx2p="" alt=" ">
           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
             <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-          </svg>          
+          </svg>
         </div>
       </a>
     </div>
@@ -313,50 +275,4 @@
   }
   document.getElementById('headerUserIcon').addEventListener('click', toggleMenu);
   document.getElementById('menuBkg').addEventListener('click', toggleMenu);
-</script>
-
-<div id="mobileSearch" data-css-1oetzmt="" style="display: none;">
-  <form id="phoenixHeaderForm" autocomplete="off" data-css-1up6dcq="" action=".">
-    <div data-css-gqw6cb="">
-      <div id="imgGreySearch" data-css-3e9tas="" alt="search icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
-          <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-        </svg>      
-      </div>
-    </div>
-    <input type="search" data-css-ilkk6k="" id="phoenixHeaderSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
-      spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="" onkeyup="beerSearch(event, this)">
-    <div data-css-18uzsga="">
-      <div id="btnClear" data-css-xnuva7="">
-        <span class="fa fa-times-circle fa-lg"></span>
-      </div>
-      <div id="btnCancel" data-css-85zn9g="">
-        <span>Cancel</span>
-      </div>
-    </div>
-  </form>
-</div>
-
-<script type="text/javascript">
-  function clearSearch() {
-    document.getElementById('phoenixHeaderSearch').value = '';
-  }
-
-  function toggleMobileSearchBar() {
-    var mobileSearchBar = document.getElementById('mobileSearch');
-    var visible = mobileSearchBar.getAttribute('data-visible');
-    var hidden = visible == null || visible == 'false';
-    if (hidden) {
-      mobileSearchBar.setAttribute('style', 'display: flex;');
-      mobileSearchBar.setAttribute('data-visible', 'true');
-      document.getElementById('headerSearchIcon').setAttribute('style', 'display: none;');
-    } else {
-      mobileSearchBar.setAttribute('style', 'display: none;');
-      mobileSearchBar.setAttribute('data-visible', 'false');
-      document.getElementById('headerSearchIcon').setAttribute('style', 'display: flex;');
-    }
-  }
-  document.getElementById('headerSearchIcon').addEventListener('click', toggleMobileSearchBar);
-  document.getElementById('btnCancel').addEventListener('click', toggleMobileSearchBar);
-  document.getElementById('btnClear').addEventListener('click', clearSearch);
 </script>
