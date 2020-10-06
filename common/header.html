@@ -16,7 +16,7 @@
           </svg>
         </div>
       </div>
-      <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
+      <input type="search" data-css-ilkk6k="" id="q" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
         placeholder="Search for Beers, Breweries, or Bars…" onkeyup="beerSearch(event, this)">
       <script type="text/javascript">
         // Override discourse css
@@ -31,7 +31,7 @@
         border-image: initial;
         margin-bottom: 0px;
         margin-top: 0px`;
-        document.getElementById('txtBeerSearch').setAttribute('style', customSearchStyle);
+        document.getElementById('q').setAttribute('style', customSearchStyle);
       </script>
     </form>
   </div>
@@ -316,7 +316,7 @@
 </script>
 
 <div id="mobileSearch" data-css-1oetzmt="" style="display: none;">
-  <form id="phoenixHeaderForm" autocomplete="off" data-css-1up6dcq="" action=".">
+  <form id="phoenixHeaderForm" autocomplete="off" data-css-1up6dcq="" action="https://www.ratebeer.com/search">
     <div data-css-gqw6cb="">
       <div id="imgGreySearch" data-css-3e9tas="" alt="search icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
@@ -324,7 +324,7 @@
         </svg>
       </div>
     </div>
-    <input type="search" data-css-ilkk6k="" id="phoenixHeaderSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
+    <input type="search" data-css-ilkk6k="" id="q" autocorrect="off" autocomplete="off" autocapitalize="off"
       spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="" onkeyup="beerSearch(event, this)">
     <div data-css-18uzsga="">
       <div id="btnClear" data-css-xnuva7="">
@@ -339,7 +339,7 @@
 
 <script type="text/javascript">
   function clearSearch() {
-    document.getElementById('phoenixHeaderSearch').value = '';
+    document.getElementById('q').value = '';
   }
 
   function toggleMobileSearchBar() {
