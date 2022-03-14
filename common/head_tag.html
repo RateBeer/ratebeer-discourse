@@ -3,9 +3,11 @@
   </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script type="text/discourse-plugin" version="0.8.9">
+const Site = require("discourse/models/site").default;
 var token = Cookies.get('token');
 if (api.getCurrentUser() == null && token != null && token.length > 0) {
     const returnPath = encodeURIComponent(window.location.pathname);
+    console.log('return path', returnPath, Discourse);
     window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
 }
 const user = api.getCurrentUser();
@@ -31,7 +33,7 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
 
 api.modifyClass('model:user', {
   externalSiteLink: function() {
-    const siteUserFields = Discourse.Site.currentProp('user_fields');
+    const siteUserFields = Site.currentProp('user_fields');
     if (!Ember.isEmpty(siteUserFields)) {
       const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
       if (!externalUserIdField) {
