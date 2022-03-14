@@ -7,8 +7,8 @@ const Site = require("discourse/models/site").default;
 var token = Cookies.get('token');
 if (api.getCurrentUser() == null && token != null && token.length > 0) {
     const returnPath = encodeURIComponent(window.location.pathname);
-    console.log('return path', returnPath, Discourse);
-    window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
+    console.log('return path', returnPath, Site);
+    window.location = Site.getURL('/session/sso?return_path=' + returnPath);
 }
 const user = api.getCurrentUser();
 if (user != null) {
