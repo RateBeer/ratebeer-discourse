@@ -1,13 +1,14 @@
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-  crossorigin="anonymous">
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script type="text/discourse-plugin" version="0.8.9">
-var token = Cookies.get('token');
-if (api.getCurrentUser() == null && token != null && token.length > 0) {
-    const returnPath = encodeURIComponent(window.location.pathname);
-    window.location = Discourse.getURL('/session/sso?return_path=' + returnPath);
-}
+const Site = require("discourse/models/site").default;
+// Commenting this bit of code out as it's breaking the site
+// var token = Cookies.get('token');
+// if (api.getCurrentUser() == null && token != null && token.length > 0) {
+//     const returnPath = encodeURIComponent(window.location.pathname);
+//     window.location = Site.getURL('/session/sso?return_path=' + returnPath);
+// }
 const user = api.getCurrentUser();
 if (user != null) {
   const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${user.username}`;
@@ -31,7 +32,7 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
 
 api.modifyClass('model:user', {
   externalSiteLink: function() {
-    const siteUserFields = Discourse.Site.currentProp('user_fields');
+    const siteUserFields = Site.currentProp('user_fields');
     if (!Ember.isEmpty(siteUserFields)) {
       const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
       if (!externalUserIdField) {

@@ -14,9 +14,9 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
             <path fill="#5C5C5C" fill-rule="evenodd" d="M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z"/>
           </svg>
-        </div>    
+        </div>
       </div>
-      <input type="search" data-css-ilkk6k="" id="txtBeerSearch" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
+      <input type="search" data-css-ilkk6k="" id="q" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"
         placeholder="Search for Beers, Breweries, or Bars…" onkeyup="beerSearch(event, this)">
       <script type="text/javascript">
         // Override discourse css
@@ -31,7 +31,7 @@
         border-image: initial;
         margin-bottom: 0px;
         margin-top: 0px`;
-        document.getElementById('txtBeerSearch').setAttribute('style', customSearchStyle);
+        document.getElementById('q').setAttribute('style', customSearchStyle);
       </script>
     </form>
   </div>
@@ -63,7 +63,7 @@
       <a id="lnkEvents" data-css-1tzz3vk="" href="/events">
         <span>Events</span>
       </a>
-      <a id="lnkPlaces" data-css-1tzz3vk="" href="/places/browse/">
+      <a id="lnkPlaces" data-css-1tzz3vk="" href="/places/">
         <span>Places</span>
       </a>
       <script type="text/javascript">
@@ -74,7 +74,7 @@
         document.getElementById('lnkUsers').setAttribute('style', 'color: #fff;');
         document.getElementById('lnkEvents').setAttribute('href', `${root}/events`);
         document.getElementById('lnkEvents').setAttribute('style', 'color: #fff;');
-        document.getElementById('lnkPlaces').setAttribute('href', `${root}/places/browse/`);
+        document.getElementById('lnkPlaces').setAttribute('href', `${root}/places/`);
         document.getElementById('lnkPlaces').setAttribute('style', 'color: #fff;');
       </script>
     </div>
@@ -158,7 +158,7 @@
         </svg>
       </div>
     </a>
-    <a id="lnkBurgerPlaces" data-css-12n8zhl="" href="/places/browse/">
+    <a id="lnkBurgerPlaces" data-css-12n8zhl="" href="/places/">
       <span>Places</span>
       <div name="imgRightCaret" data-css-2njx2p="" alt=" ">
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
@@ -176,7 +176,7 @@
   document.getElementById('lnkBurgerUsers').setAttribute('style', 'color: #231f20;');
   document.getElementById('lnkBurgerEvents').setAttribute('href', `${root}/events`);
   document.getElementById('lnkBurgerEvents').setAttribute('style', 'color: #231f20;');
-  document.getElementById('lnkBurgerPlaces').setAttribute('href', `${root}/places/browse/`);
+  document.getElementById('lnkBurgerPlaces').setAttribute('href', `${root}/places/`);
   document.getElementById('lnkBurgerPlaces').setAttribute('style', 'color: #231f20;');
 
   function toggleBurgerMenu() {
@@ -257,7 +257,7 @@
         <div name="imgRightCaret" data-css-2njx2p="" alt=" ">
           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
             <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-          </svg>          
+          </svg>
         </div>
       </a>
     </div>
@@ -282,7 +282,7 @@
         <div name="imgRightCaret" data-css-2njx2p="" alt=" ">
           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
             <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-          </svg>          
+          </svg>
         </div>
       </a>
     </div>
@@ -316,15 +316,15 @@
 </script>
 
 <div id="mobileSearch" data-css-1oetzmt="" style="display: none;">
-  <form id="phoenixHeaderForm" autocomplete="off" data-css-1up6dcq="" action=".">
+  <form id="phoenixHeaderForm" autocomplete="off" data-css-1up6dcq="" action="https://www.ratebeer.com/search">
     <div data-css-gqw6cb="">
       <div id="imgGreySearch" data-css-3e9tas="" alt="search icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12">
           <path fill="#484848" fill-rule="evenodd" d="M1.104 11.779L6 6 1.104.22A.633.633 0 0 0 .226.14.6.6 0 0 0 .144 1L4.38 6 .144 11a.6.6 0 0 0 .082.86.63.63 0 0 0 .878-.081z"/>
-        </svg>      
+        </svg>
       </div>
     </div>
-    <input type="search" data-css-ilkk6k="" id="phoenixHeaderSearch" autocorrect="off" autocomplete="off" autocapitalize="off"
+    <input type="search" data-css-ilkk6k="" id="q" autocorrect="off" autocomplete="off" autocapitalize="off"
       spellcheck="false" placeholder="Search for Beers, Breweries, or Bars…" value="" onkeyup="beerSearch(event, this)">
     <div data-css-18uzsga="">
       <div id="btnClear" data-css-xnuva7="">
@@ -339,7 +339,7 @@
 
 <script type="text/javascript">
   function clearSearch() {
-    document.getElementById('phoenixHeaderSearch').value = '';
+    document.getElementById('q').value = '';
   }
 
   function toggleMobileSearchBar() {
