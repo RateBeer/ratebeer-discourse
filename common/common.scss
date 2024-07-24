@@ -734,3 +734,8 @@ padding: 15px;
     font: normal normal 300 normal 14px / 22.4px Lato, sans-serif;
     outline: rgb(33, 153, 232) none 0px;
 }/*#copyrightA_6, #copyrightA_7*/
+
+/* important: FIX FOR ADMIN MENU DROPDOWNS */
+.fk-d-menu__inner-content .dropdown-menu {
+   display: block;
+}
