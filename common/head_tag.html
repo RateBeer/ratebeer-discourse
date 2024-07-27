@@ -1,13 +1,112 @@
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous">
+  </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script type="text/discourse-plugin" version="0.8.9">
-    var token = Cookies.get('token');
-    var processed = Cookies.get('autologin');
-    if (api.getCurrentUser() == null && token != null) {
-        Cookies.set('autologin', 'true', { domain: '.ratebeer.com' });
-        const returnPath = encodeURIComponent(window.location.pathname)
-        window.location = Discourse.getURL('/session/sso?return_path=' + returnPath)
+const Site = require("discourse/models/site").default;
+// Commenting this bit of code out as it's breaking the site
+// var token = Cookies.get('token');
+// if (api.getCurrentUser() == null && token != null && token.length > 0) {
+//     const returnPath = encodeURIComponent(window.location.pathname);
+//     window.location = Site.getURL('/session/sso?return_path=' + returnPath);
+// }
+const user = api.getCurrentUser();
+if (user != null) {
+  const imageUrl = `https://res.cloudinary.com/ratebeer/image/upload/w_40,h_40,c_fill,d_userdefault_dtgkll.png,f_auto/user_${user.username}`;
+  document.getElementById('headerUserIcon').setAttribute('src', imageUrl);
+  document.getElementById('menuUserImage').setAttribute('src', imageUrl);
+}
+</script>
+
+<script type="text/discourse-plugin" version="0.8.7">
+api.registerConnectorClass('user-profile-primary', 'external-site-link', {
+  setupComponent(args, component) {
+    component.set('externalSiteLink', args.model.get('externalSiteLink'));
+  }
+});
+
+api.registerConnectorClass('user-card-metadata', 'external-site-link', {
+  setupComponent(args, component) {
+    component.set('externalSiteLink', args.user.get('externalSiteLink'));
+  }
+});
+
+api.modifyClass('model:user', {
+  externalSiteLink: function() {
+    const siteUserFields = Site.currentProp('user_fields');
+    if (!Ember.isEmpty(siteUserFields)) {
+      const externalUserIdField = siteUserFields.filterBy('name', 'profile')[0]
+      if (!externalUserIdField) {
+        return null;
+      }
+      const userFieldId = externalUserIdField.get('id');
+      const userFields = this.get('user_fields');
+      if (userFields && userFields[userFieldId]) {
+        const url = "https://" + window.location.hostname.replace('community.', '') + "/user/" + userFields[userFieldId] + "/";
+        const link = "<a href='"+url+"' target='_blank'>click here</a>";
+        return Ember.Object.create({ link, name: 'Profile' });
+      } else {
+        return null;
+      }
     }
+  }.property('user_fields.@each.value')
+});
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-profile-primary/external-site-link'>
+{{#if externalSiteLink}}
+<div class="public-user-fields">
+  <div class="public-user-field">
+    <span class="user-field-name">{{externalSiteLink.name}}</span>:
+    <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+  </div>
+</div>
+{{/if}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-card-metadata/external-site-link'>
+{{#if externalSiteLink}}
+<h3 class="user-card-public-field">
+  <span class="user-field-name">{{externalSiteLink.name}}</span>:
+  <span class="user-field-value">{{{externalSiteLink.link}}}</span>
+</h3>
+{{/if}}
+</script>
+
+<script>
+  function beerSearch(e, elem) {
+    if (e.keyCode != 13) return
+    var url = 'https://' + window.location.hostname.replace('community.', 'www.') + '/search?q=';
+    document.location = encodeURI(url + elem.value);
+  }
+
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  function getSession() {
+    const session = decodeURIComponent(getCookie('session'));
+    if (session) {
+      try {
+        return JSON.parse(atob(session))
+      } catch (e) {
+        console.error(e);
+      }
+      return null;
+    }
+  }
+
+  $(document).ready(function () {
+    const root = `//${window.location.host.replace('community.', 'www.')}`
+    const session = getSession();
+    const userLinks = document.getElementsByName('userLink');
+    for (i = 0; i < userLinks.length; i++) {
+      const href = userLinks[i].getAttribute('href');
+      userLinks[i].setAttribute('href', root + href.replace('__USER_ID__', session.userId));
+    }
+    const usernameSpan = document.getElementById('usernameSpan');
+    usernameSpan.innerHTML = session.username;
+  });
 </script>
