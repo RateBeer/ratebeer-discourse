@@ -10,7 +10,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 <script type="text/discourse-plugin" version="0.8.9">
 const Site = require("discourse/models/site").default;
-
+const { computed } = require('@ember/object');
+  
 // Updated code with error handling and logging
 try {
   const token = Cookies.get('token');
@@ -52,7 +53,7 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
 });
 
 api.modifyClass('model:user', {
-  externalSiteLink: Ember.computed('user_fields.@each.value', function() {
+  externalSiteLink: computed('user_fields.@each.value', function() {
     const siteUserFields = Site.currentProp('user_fields');
     if (!Ember.isEmpty(siteUserFields)) {
       const externalUserIdField = siteUserFields.findBy('name', 'profile');
