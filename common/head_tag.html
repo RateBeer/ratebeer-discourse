@@ -53,27 +53,6 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
     component.set('externalSiteLink', get(args.user, 'externalSiteLink'));
   }
 });
-
-api.modifyClass('model:user', {
-  externalSiteLink: computed('user_fields.@each.value', function() {
-    const siteUserFields = Site.currentProp('user_fields');
-    if (!isEmpty(siteUserFields)) {
-      const externalUserIdField = siteUserFields.findBy('name', 'profile');
-      if (!externalUserIdField) {
-        return null;
-      }
-      const userFieldId = get(externalUserIdField, 'id');
-      const userFields = get(this, 'user_fields');
-      if (userFields && userFields[userFieldId]) {
-        const url = `https://${window.location.hostname.replace('community.', '')}/user/${userFields[userFieldId]}/`;
-        const link = `<a href='${url}' target='_blank'>click here</a>`;
-        return Ember.Object.create({ link, name: 'Profile' });
-      } else {
-        return null;
-      }
-    }
-  })
-});
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/user-profile-primary/external-site-link'>
