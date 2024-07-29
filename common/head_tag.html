@@ -52,8 +52,7 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
 });
 
 api.modifyClass('model:user', {
-  @computed('user_fields.@each.value')
-  externalSiteLink() {
+  externalSiteLink: Ember.computed('user_fields.@each.value', function() {
     const siteUserFields = Site.currentProp('user_fields');
     if (!Ember.isEmpty(siteUserFields)) {
       const externalUserIdField = siteUserFields.findBy('name', 'profile');
@@ -70,7 +69,7 @@ api.modifyClass('model:user', {
         return null;
       }
     }
-  }
+  })
 });
 </script>
 
