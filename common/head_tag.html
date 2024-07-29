@@ -11,7 +11,9 @@
 <script type="text/discourse-plugin" version="0.8.9">
 const Site = require("discourse/models/site").default;
 const { computed } = require('@ember/object');
-  
+const { isEmpty } = require('@ember/utils');
+const { get } = require('@ember/object');
+
 // Updated code with error handling and logging
 try {
   const token = Cookies.get('token');
@@ -42,26 +44,26 @@ if (user != null) {
 <script type="text/discourse-plugin" version="0.8.7">
 api.registerConnectorClass('user-profile-primary', 'external-site-link', {
   setupComponent(args, component) {
-    component.set('externalSiteLink', args.model.externalSiteLink);
+    component.set('externalSiteLink', get(args.model, 'externalSiteLink'));
   }
 });
 
 api.registerConnectorClass('user-card-metadata', 'external-site-link', {
   setupComponent(args, component) {
-    component.set('externalSiteLink', args.user.externalSiteLink);
+    component.set('externalSiteLink', get(args.user, 'externalSiteLink'));
   }
 });
 
 api.modifyClass('model:user', {
   externalSiteLink: computed('user_fields.@each.value', function() {
     const siteUserFields = Site.currentProp('user_fields');
-    if (!Ember.isEmpty(siteUserFields)) {
+    if (!isEmpty(siteUserFields)) {
       const externalUserIdField = siteUserFields.findBy('name', 'profile');
       if (!externalUserIdField) {
         return null;
       }
-      const userFieldId = externalUserIdField.id;
-      const userFields = this.user_fields;
+      const userFieldId = get(externalUserIdField, 'id');
+      const userFields = get(this, 'user_fields');
       if (userFields && userFields[userFieldId]) {
         const url = `https://${window.location.hostname.replace('community.', '')}/user/${userFields[userFieldId]}/`;
         const link = `<a href='${url}' target='_blank'>click here</a>`;
@@ -85,10 +87,9 @@ api.modifyClass('model:user', {
 {{/if}}
 </script>
 
-
 <script>
   function beerSearch(e, elem) {
-    if (e.keyCode != 13) return
+    if (e.keyCode != 13) return;
     var url = 'https://' + window.location.hostname.replace('community.', 'www.') + '/search?q=';
     document.location = encodeURI(url + elem.value);
   }
@@ -103,7 +104,7 @@ api.modifyClass('model:user', {
     const session = decodeURIComponent(getCookie('session'));
     if (session) {
       try {
-        return JSON.parse(atob(session))
+        return JSON.parse(atob(session));
       } catch (e) {
         console.error(e);
       }
@@ -112,7 +113,7 @@ api.modifyClass('model:user', {
   }
 
   $(document).ready(function () {
-    const root = `//${window.location.host.replace('community.', 'www.')}`
+    const root = `//${window.location.host.replace('community.', 'www.')}`;
     const session = getSession();
     const userLinks = document.getElementsByName('userLink');
     for (i = 0; i < userLinks.length; i++) {
