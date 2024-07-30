@@ -79,17 +79,28 @@ api.registerConnectorClass('user-card-metadata', 'external-site-link', {
     if (parts.length == 2) return parts.pop().split(";").shift();
   }
 
-  function getSession() {
-    const session = decodeURIComponent(getCookie('session'));
-    if (session) {
-      try {
+function getSession() {
+  const session = decodeURIComponent(getCookie('session'));
+  if (session) {
+    try {
+      // Check if the session value is correctly encoded in Base64
+      if (btoa(atob(session)) === session) {
         return JSON.parse(atob(session));
-      } catch (e) {
-        console.error(e);
+      } else {
+        // Encode in Base64 if not correctly encoded
+        const encodedSession = btoa(session);
+        if (btoa(atob(encodedSession)) === encodedSession) {
+          return JSON.parse(atob(encodedSession));
+        } else {
+          console.error('Session cookie is not correctly encoded and cannot be fixed');
+        }
       }
-      return null;
+    } catch (e) {
+      console.error('Failed to decode session cookie:', e);
     }
   }
+  return null;
+}
 
   $(document).ready(function () {
     const root = `//${window.location.host.replace('community.', 'www.')}`;
